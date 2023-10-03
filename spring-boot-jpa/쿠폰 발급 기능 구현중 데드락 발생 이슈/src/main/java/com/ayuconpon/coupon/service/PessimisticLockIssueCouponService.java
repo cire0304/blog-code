@@ -1,25 +1,23 @@
 package com.ayuconpon.coupon.service;
 
-import com.ayuconpon.coupon.domain.entity.Coupon;
-import com.ayuconpon.coupon.domain.entity.UserCoupon;
 import com.ayuconpon.coupon.domain.CouponRepository;
 import com.ayuconpon.coupon.domain.UserCouponRepository;
+import com.ayuconpon.coupon.domain.entity.Coupon;
+import com.ayuconpon.coupon.domain.entity.UserCoupon;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
-public class IssueCouponService {
+public class PessimisticLockIssueCouponService {
 
     private final CouponRepository couponRepository;
     private final UserCouponRepository userCouponRepository;
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional
     public void issue(Long couponId) {
-        Coupon coupon = couponRepository.findById(couponId)
-                .orElseThrow(RuntimeException::new);
+        Coupon coupon = couponRepository.findByIdWithPessimisticLock(couponId);
 
         coupon.decrease();
         UserCoupon issuedCoupon = new UserCoupon(coupon);

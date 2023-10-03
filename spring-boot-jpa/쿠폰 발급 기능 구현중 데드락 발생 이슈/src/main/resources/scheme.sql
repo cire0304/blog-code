@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS `coupon`, `user_coupon`, `user`;
 CREATE TABLE IF NOT EXISTS `coupon` (
     `coupon_id` BIGINT NOT NULL AUTO_INCREMENT,
     `quantity` INT NOT NULL,
+    `version` BIGINT DEFAULT 1,
     PRIMARY KEY (`coupon_id`))
     ENGINE = InnoDB;
 
