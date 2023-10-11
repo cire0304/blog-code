@@ -1,0 +1,25 @@
+HELP.md
+lib/*
+/bin
+
+### Gradle ###
+.gradle
+**/build/
+!src/**/build/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### macOs ###
+/.DS_Store
+
+
+src/main/resources/application.properties
+spring-boot-jpa/**/bin
+**/*.DS_Store
