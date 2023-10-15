@@ -14,7 +14,6 @@ import java.util.List;
 @Service
 public class CouponService {
 
-    private final CouponRepository couponRepository;
     private final UserCouponRepository userCouponRepository;
 
     @Transactional
@@ -23,13 +22,6 @@ public class CouponService {
 
         userCoupons.forEach(userCoupon -> userCoupon.getCoupon()
                                                     .getCouponId());
-
-//        Coupon coupon = userCoupons.get(0).getCoupon();
-//        Long couponId = coupon.getCouponId();
-////        Long b = userCoupons.get(0).getCoupon().getQuantity();
-////        Long c = userCoupons.get(1).getCoupon().getQuantity();
-////        Long d = userCoupons.get(2).getCoupon().getQuantity();
-
     }
 
     @Transactional

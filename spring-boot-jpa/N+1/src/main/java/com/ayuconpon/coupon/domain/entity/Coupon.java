@@ -5,7 +5,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-//@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "coupon")
 public class Coupon {
@@ -17,11 +18,4 @@ public class Coupon {
     @Column(name = "quantity")
     private Long quantity;
 
-    public Long getCouponId() {
-        return couponId;
-    }
-
-    public Long getQuantity() {
-        return quantity;
-    }
 }

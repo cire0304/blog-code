@@ -14,22 +14,12 @@ class CouponServiceTest {
 
     @Test
     public void case1 () {
-        //given
         couponService.case1();
-
-        //when
-
-        //then
      }
 
     @Test
     public void case2 () {
-        //given
         couponService.case2();
-
-        //when
-
-        //then
     }
 
 
