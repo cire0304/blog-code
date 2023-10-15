@@ -1,6 +1,5 @@
 package com.ayuconpon.coupon.facade;
 
-import com.ayuconpon.coupon.domain.CouponRepository;
 import com.ayuconpon.coupon.domain.LockRepository;
 import com.ayuconpon.coupon.service.IssueCouponService;
 import lombok.RequiredArgsConstructor;

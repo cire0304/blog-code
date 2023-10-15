@@ -77,7 +77,7 @@ class IssueCouponServiceTest {
         long start = System.currentTimeMillis();
         //when
         for (int i = 1; i <= leftQuantity; i++) {
-            Thread.sleep(10);
+            Thread.sleep(100);
             service.execute(() -> {
                 pessimisticLockIssueCouponService.issue(couponId);
                 latch.countDown();
@@ -86,7 +86,7 @@ class IssueCouponServiceTest {
         latch.await();
 
         long end = System.currentTimeMillis();
-        System.out.println(end - start); // 1000 => 5809 // 100_000 => 59861
+        System.out.println(end - start); // 1000 => 104646
 
         // then
         assertThat(userCouponRepository.count()).isEqualTo(leftQuantity);
@@ -101,7 +101,7 @@ class IssueCouponServiceTest {
     public void optimisticLockTest () throws InterruptedException {
         //given
         Long couponId = 1L;
-        int leftQuantity = 2;
+        int leftQuantity = 1000;
 
         int numberOfThreads = 32;
         ExecutorService service = Executors.newFixedThreadPool(numberOfThreads);
@@ -123,7 +123,7 @@ class IssueCouponServiceTest {
         latch.await();
 
         long end = System.currentTimeMillis();
-        System.out.println(end - start); // 1000 => 9316  // 100_000 => 123885
+        System.out.println(end - start); // 1000 => 104160
 
         assertThat(userCouponRepository.count()).isEqualTo(leftQuantity);
 
